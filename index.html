@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Prompt Engineering Generator - Create effective prompts using proven techniques">
+    <meta name="keywords" content="prompt engineering, AI prompts, prompt generator, ChatGPT, AI tools">
+    <meta property="og:title" content="Prompt Engineering Generator">
+    <meta property="og:description" content="Create powerful AI prompts using established prompt engineering principles">
+    <meta property="og:type" content="website">
+    <title>Prompt Engineering Generator | Create Better AI Prompts</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <span>Prompt Engine</span>
+                </div>
+                <div class="nav-actions">
+                    <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                    <a href="#knowledge" class="nav-link">Learn</a>
+                    <a href="https://github.com/yourusername/prompt-engine" target="_blank" class="nav-link">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Craft Perfect AI Prompts</h1>
+                <p class="hero-subtitle">Generate effective prompts using proven prompt engineering principles. Transform your ideas into clear, actionable instructions for AI models.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="promptCount">0</span>
+                        <span class="stat-label">Prompts Created</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="qualityScore">-</span>
+                        <span class="stat-label">Quality Score</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Prompt Builder Section -->
+                <div class="builder-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Prompt Builder</h2>
+                            <button id="resetBtn" class="btn-secondary-small">Reset</button>
+                        </div>
+
+                        <!-- Task Type Selection -->
+                        <div class="form-group">
+                            <label class="form-label">
+                                Task Type
+                                <span class="tooltip-trigger" data-tooltip="Select the primary purpose of your prompt">ⓘ</span>
+                            </label>
+                            <div class="task-grid">
+                                <button class="task-card active" data-task="writing">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                    <span>Writing</span>
+                                </button>
+                                <button class="task-card" data-task="coding">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <polyline points="16 18 22 12 16 6"></polyline>
+                                        <polyline points="8 6 2 12 8 18"></polyline>
+                                    </svg>
+                                    <span>Coding</span>
+                                </button>
+                                <button class="task-card" data-task="analysis">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                                    </svg>
+                                    <span>Analysis</span>
+                                </button>
+                                <button class="task-card" data-task="creative">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                        <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                        <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                    </svg>
+                                    <span>Creative</span>
+                                </button>
+                                <button class="task-card" data-task="technical">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="9" y1="3" x2="9" y2="21"></line>
+                                    </svg>
+                                    <span>Technical</span>
+                                </button>
+                                <button class="task-card" data-task="educational">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                    </svg>
+                                    <span>Educational</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Role Definition -->
+                        <div class="form-group">
+                            <label for="roleInput" class="form-label">
+                                Expert Role
+                                <span class="tooltip-trigger" data-tooltip="Define who the AI should act as">ⓘ</span>
+                            </label>
+                            <input type="text" id="roleInput" class="form-input" placeholder="e.g., Expert Software Engineer, Marketing Strategist" value="Professional Expert">
+                        </div>
+
+                        <!-- Main Task Description -->
+                        <div class="form-group">
+                            <label for="taskInput" class="form-label">
+                                Task Description
+                                <span class="tooltip-trigger" data-tooltip="Describe what you want the AI to do">ⓘ</span>
+                            </label>
+                            <textarea id="taskInput" class="form-textarea" rows="4" placeholder="Describe your task clearly and specifically..."></textarea>
+                            <div class="char-counter">
+                                <span id="charCount">0</span> characters
+                            </div>
+                        </div>
+
+                        <!-- Context Input -->
+                        <div class="form-group">
+                            <label for="contextInput" class="form-label">
+                                Context & Background
+                                <span class="tooltip-trigger" data-tooltip="Provide relevant background information">ⓘ</span>
+                            </label>
+                            <textarea id="contextInput" class="form-textarea" rows="3" placeholder="Add context, background information, or specific details..."></textarea>
+                        </div>
+
+                        <!-- Advanced Options Toggle -->
+                        <button id="advancedToggle" class="btn-text">
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                            Advanced Options
+                        </button>
+
+                        <div id="advancedOptions" class="advanced-section">
+                            <!-- Output Format -->
+                            <div class="form-group">
+                                <label class="form-label">Output Format</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="format" value="markdown"> Markdown
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="format" value="bullets"> Bullet Points
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="format" value="numbered"> Numbered List
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="format" value="json"> JSON
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="format" value="code"> Code Block
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Tone Selection -->
+                            <div class="form-group">
+                                <label class="form-label">Tone & Style</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="tone" value="professional" checked> Professional
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="tone" value="casual"> Casual
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="tone" value="technical"> Technical
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="tone" value="creative"> Creative
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="tone" value="formal"> Formal
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Prompt Engineering Techniques -->
+                            <div class="form-group">
+                                <label class="form-label">Engineering Techniques</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="technique" value="cot" id="cotCheck"> Chain-of-Thought
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="technique" value="fewshot" id="fewshotCheck"> Few-Shot Examples
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="technique" value="stepbystep"> Step-by-Step
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="technique" value="constraints"> Add Constraints
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Constraints -->
+                            <div class="form-group">
+                                <label for="constraintsInput" class="form-label">Specific Constraints</label>
+                                <input type="text" id="constraintsInput" class="form-input" placeholder="e.g., Max 500 words, Use simple language">
+                            </div>
+
+                            <!-- Few-Shot Examples (conditional) -->
+                            <div id="fewshotSection" class="form-group" style="display: none;">
+                                <label for="examplesInput" class="form-label">Example Input/Output</label>
+                                <textarea id="examplesInput" class="form-textarea" rows="3" placeholder="Example 1: Input -> Output"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Generate Button -->
+                        <button id="generateBtn" class="btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            Generate Prompt
+                        </button>
+                    </div>
+
+                    <!-- Templates Section -->
+                    <div class="card mt-20">
+                        <div class="card-header">
+                            <h2>Quick Templates</h2>
+                        </div>
+                        <div class="template-grid" id="templateGrid">
+                            <!-- Templates will be loaded from prompts-data.js -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="preview-section">
+                    <div class="card sticky">
+                        <div class="card-header">
+                            <h2>Generated Prompt</h2>
+                            <div class="quality-badge" id="qualityBadge">
+                                <span id="scoreValue">-</span>
+                            </div>
+                        </div>
+
+                        <div id="promptPreview" class="prompt-preview">
+                            <p class="preview-placeholder">Your generated prompt will appear here. Fill in the form and click "Generate Prompt" to start.</p>
+                        </div>
+
+                        <!-- Quality Suggestions -->
+                        <div id="suggestions" class="suggestions-container" style="display: none;">
+                            <h3 class="suggestions-title">Suggestions for Improvement</h3>
+                            <div id="suggestionsList" class="suggestions-list"></div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button id="copyBtn" class="btn-primary" disabled>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy to Clipboard
+                            </button>
+                            <button id="downloadBtn" class="btn-secondary" disabled>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download
+                            </button>
+                            <button id="shareBtn" class="btn-secondary" disabled>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <circle cx="18" cy="5" r="3"></circle>
+                                    <circle cx="6" cy="12" r="3"></circle>
+                                    <circle cx="18" cy="19" r="3"></circle>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                </svg>
+                                Share
+                            </button>
+                        </div>
+
+                        <!-- Prompt History -->
+                        <div class="history-section mt-20">
+                            <h3>Recent Prompts</h3>
+                            <div id="historyList" class="history-list">
+                                <p class="history-empty">No recent prompts yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Knowledge Base Section -->
+    <section id="knowledge" class="knowledge-section">
+        <div class="container">
+            <h2 class="section-title">Prompt Engineering Guide</h2>
+            <p class="section-subtitle">Learn the principles behind effective AI prompts</p>
+
+            <div class="knowledge-grid">
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">📝</div>
+                    <h3>Be Specific</h3>
+                    <p>Clear, detailed instructions yield better results. Include context, desired format, and constraints.</p>
+                </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🎭</div>
+                    <h3>Assign Roles</h3>
+                    <p>Tell the AI to act as an expert in your domain for more focused and relevant responses.</p>
+                </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🔗</div>
+                    <h3>Chain-of-Thought</h3>
+                    <p>Ask the AI to think step-by-step for complex reasoning and problem-solving tasks.</p>
+                </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">💡</div>
+                    <h3>Provide Examples</h3>
+                    <p>Few-shot prompting with examples guides the AI toward your desired output format.</p>
+                </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🎯</div>
+                    <h3>Set Constraints</h3>
+                    <p>Define boundaries, word limits, and requirements to control output quality and scope.</p>
+                </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🔄</div>
+                    <h3>Iterate & Refine</h3>
+                    <p>Test and adjust prompts based on results. Small changes can significantly improve output.</p>
+                </div>
+            </div>
+
+            <!-- Accordion FAQ -->
+            <div class="faq-section">
+                <h3 class="faq-title">Frequently Asked Questions</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">What is prompt engineering?</button>
+                        <div class="accordion-content">
+                            <p>Prompt engineering is the practice of crafting effective inputs for AI models to get desired outputs. It involves understanding how to structure instructions, provide context, and use specific techniques to improve AI responses.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">What's the difference between zero-shot and few-shot prompting?</button>
+                        <div class="accordion-content">
+                            <p>Zero-shot prompting gives the AI a task without examples, relying on its training. Few-shot prompting provides one or more examples of the desired input-output format, helping guide the AI's response pattern.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">How do I improve prompt quality?</button>
+                        <div class="accordion-content">
+                            <p>Focus on clarity, specificity, and structure. Include role definitions, clear objectives, relevant context, output format specifications, and constraints. Test and iterate based on results.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Prompt Engineering Generator. Built with ❤️ for better AI interactions.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/yourusername/prompt-engine" target="_blank">GitHub</a>
+                    <a href="#knowledge">Documentation</a>
+                    <a href="https://www.kaggle.com/whitepaper-prompt-engineering" target="_blank">Research Paper</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts -->
+    <script src="prompts-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
